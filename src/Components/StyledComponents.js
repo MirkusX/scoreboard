@@ -3,11 +3,17 @@ import styled from "styled-components";
 export const StyledSection = styled.section`
   display: flex;
   justify-content: space-around;
+  margin-bottom: 1em;
   ${(props) => {
     if (props.column)
       return `
     flex-direction: column;
-    width: 25%;`;
+    width: 25%;
+    align-items: center;
+    margin: 0 auto;
+    @media (max-width: 811px) {
+        width: 100%;
+    }`;
   }}
 `;
 
@@ -46,7 +52,8 @@ export const StyledDiv = styled.div`
    justify-content: space-between;
     background: inherit;
     color: inherit;
-    padding: 0;`;
+    padding: 0;
+    width: 100%;`;
   }}
 `;
 

@@ -38,18 +38,32 @@ export const Frontpage = () => {
   };
 
   return (
-    <StyledSection>
-      <div>
-        <StyledH1>Home</StyledH1>
-        <StyledDiv>
-          <StyledH2>{state.home}</StyledH2>
-        </StyledDiv>
-        <StyledDiv buttonDiv>
-          <StyledButton onClick={() => add("home", 1)}>+1</StyledButton>
-          <StyledButton onClick={() => add("home", 2)}>+2</StyledButton>
-          <StyledButton onClick={() => add("home", 3)}>+3</StyledButton>
-        </StyledDiv>
-      </div>
+    <>
+      <StyledSection>
+        <div>
+          <StyledH1>Home</StyledH1>
+          <StyledDiv>
+            <StyledH2>{state.home}</StyledH2>
+          </StyledDiv>
+          <StyledDiv buttonDiv>
+            <StyledButton onClick={() => add("home", 1)}>+1</StyledButton>
+            <StyledButton onClick={() => add("home", 2)}>+2</StyledButton>
+            <StyledButton onClick={() => add("home", 3)}>+3</StyledButton>
+          </StyledDiv>
+        </div>
+
+        <div>
+          <StyledH1>Guest</StyledH1>
+          <StyledDiv>
+            <StyledH2>{state.guest}</StyledH2>
+          </StyledDiv>
+          <StyledDiv buttonDiv>
+            <StyledButton onClick={() => add("guest", 1)}>+1</StyledButton>
+            <StyledButton onClick={() => add("guest", 2)}>+2</StyledButton>
+            <StyledButton onClick={() => add("guest", 3)}>+3</StyledButton>
+          </StyledDiv>
+        </div>
+      </StyledSection>
       <StyledSection column>
         <StyledButton onClick={() => newGame()}>New Game</StyledButton>
         <StyledDiv row>
@@ -81,17 +95,6 @@ export const Frontpage = () => {
           <StyledButton onClick={() => stopTimer()}>Stop</StyledButton>
         </StyledDiv>
       </StyledSection>
-      <div>
-        <StyledH1>Guest</StyledH1>
-        <StyledDiv>
-          <StyledH2>{state.guest}</StyledH2>
-        </StyledDiv>
-        <StyledDiv buttonDiv>
-          <StyledButton onClick={() => add("guest", 1)}>+1</StyledButton>
-          <StyledButton onClick={() => add("guest", 2)}>+2</StyledButton>
-          <StyledButton onClick={() => add("guest", 3)}>+3</StyledButton>
-        </StyledDiv>
-      </div>
-    </StyledSection>
+    </>
   );
 };
