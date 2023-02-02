@@ -19,6 +19,7 @@ export const Frontpage = () => {
     dispatch({ type: "resetHome" });
     dispatch({ type: "resetFouls" });
     dispatch({ type: "resetPeriod" });
+    dispatch({ type: "date", payload: 0 });
   };
   const start = Date.now();
   const timer = () => {
@@ -46,21 +47,27 @@ export const Frontpage = () => {
           <StyledButton onClick={() => add("home", 3)}>+3</StyledButton>
         </StyledDiv>
       </div>
-      <div>
+      <StyledSection column>
         <StyledButton onClick={() => newGame()}>New Game</StyledButton>
-        <StyledH1>Fouls</StyledH1>
-        <StyledDiv>
-          <StyledH2>{state.fouls}</StyledH2>
-        </StyledDiv>
-        <StyledDiv foulsButtonDiv>
-          <StyledButton onClick={() => add("fouls", 1)}>+1</StyledButton>
-        </StyledDiv>
-        <StyledH1>Peroids</StyledH1>
-        <StyledDiv>
-          <StyledH2>{state.period}</StyledH2>
-        </StyledDiv>
-        <StyledDiv foulsButtonDiv>
-          <StyledButton onClick={() => add("period", 1)}>+1</StyledButton>
+        <StyledDiv row>
+          <div>
+            <StyledH1>Fouls</StyledH1>
+            <StyledDiv>
+              <StyledH2>{state.fouls}</StyledH2>
+            </StyledDiv>
+            <StyledDiv foulsButtonDiv>
+              <StyledButton onClick={() => add("fouls", 1)}>+1</StyledButton>
+            </StyledDiv>
+          </div>
+          <div>
+            <StyledH1>Peroids</StyledH1>
+            <StyledDiv>
+              <StyledH2>{state.period}</StyledH2>
+            </StyledDiv>
+            <StyledDiv foulsButtonDiv>
+              <StyledButton onClick={() => add("period", 1)}>+1</StyledButton>
+            </StyledDiv>
+          </div>
         </StyledDiv>
         <StyledH1>Timer</StyledH1>
         <StyledDiv>
@@ -70,7 +77,7 @@ export const Frontpage = () => {
           <StyledButton onClick={() => startTimer()}>Start</StyledButton>
           <StyledButton onClick={() => stopTimer()}>Stop</StyledButton>
         </StyledDiv>
-      </div>
+      </StyledSection>
       <div>
         <StyledH1>Guest</StyledH1>
         <StyledDiv>

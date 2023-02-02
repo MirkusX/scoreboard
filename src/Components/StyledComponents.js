@@ -3,6 +3,12 @@ import styled from "styled-components";
 export const StyledSection = styled.section`
   display: flex;
   justify-content: space-around;
+  ${(props) => {
+    if (props.column)
+      return `
+    flex-direction: column;
+    width: 25%;`;
+  }}
 `;
 
 export const StyledDiv = styled.div`
@@ -30,6 +36,15 @@ export const StyledDiv = styled.div`
     display: flex;
     justify-content: center;
     `;
+  }}
+  ${(props) => {
+    if (props.row)
+      return `
+    display: flex;
+   justify-content: space-between;
+    background: inherit;
+    color: inherit;
+    padding: 0;`;
   }}
 `;
 
