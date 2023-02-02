@@ -20,12 +20,11 @@ export const Frontpage = () => {
     dispatch({ type: "resetPeriod" });
   };
   const timer = () => {
+    let start = Date.now();
     setInterval(() => {
-      const start = Date.now();
-      const difference = Date.now() - start;
-      let time = Math.floor(difference / 1000);
-      console.log(time);
-      dispatch({ type: "date", payload: time });
+      let difference = Date.now() - start;
+      let secs = Math.floor(difference / 1000);
+      dispatch({ type: "date", payload: secs });
     }, 1000);
   };
 

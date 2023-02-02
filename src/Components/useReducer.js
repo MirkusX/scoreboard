@@ -3,7 +3,7 @@ export const initialState = {
   guest: 0,
   fouls: 0,
   period: 0,
-  date: 0,
+  date: "00:00",
 };
 
 export const reducer = (state, action) => {
