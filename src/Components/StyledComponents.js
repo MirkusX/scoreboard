@@ -16,6 +16,8 @@ export const StyledDiv = styled.div`
   color: #f94f6d;
   padding: 0.5em 1.5em;
   margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
   ${(props) => {
     if (props.buttonDiv)
       return `

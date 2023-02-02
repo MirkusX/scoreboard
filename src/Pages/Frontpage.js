@@ -19,15 +19,18 @@ export const Frontpage = () => {
     dispatch({ type: "resetHome" });
     dispatch({ type: "resetFouls" });
     dispatch({ type: "resetPeriod" });
-    dispatch({ type: "date", payload: 0 });
+    dispatch({ type: "date", payload: "00:00" });
   };
   const start = Date.now();
   const timer = () => {
     let difference = Date.now() - start;
-    let secs = Math.floor(difference / 1000);
-    dispatch({ type: "date", payload: secs });
+    let secs = Math.floor((difference % (1000 * 60)) / 1000);
+    let mins = Math.floor(difference / 60000);
+    let overallTime = `${mins}:${secs}`;
+    dispatch({ type: "date", payload: overallTime });
   };
   const startTimer = () => {
+    clearInterval(interval.current);
     interval.current = setInterval(timer, 1000);
   };
   const stopTimer = () => {
