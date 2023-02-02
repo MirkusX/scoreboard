@@ -51,7 +51,6 @@ export const Frontpage = () => {
             <StyledButton onClick={() => add("home", 3)}>+3</StyledButton>
           </StyledDiv>
         </div>
-
         <div>
           <StyledH1>Guest</StyledH1>
           <StyledDiv>
@@ -90,7 +89,7 @@ export const Frontpage = () => {
         <StyledDiv>
           <StyledH2>{state.date}</StyledH2>
         </StyledDiv>
-        <StyledDiv foulsButtonDiv>
+        <StyledDiv timerDiv>
           <StyledButton onClick={() => startTimer()}>Start</StyledButton>
           <StyledButton onClick={() => stopTimer()}>Stop</StyledButton>
         </StyledDiv>

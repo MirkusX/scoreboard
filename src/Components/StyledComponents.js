@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const StyledSection = styled.section`
   display: flex;
   justify-content: space-around;
-  margin-bottom: 1em;
   ${(props) => {
     if (props.column)
       return `
@@ -54,6 +53,17 @@ export const StyledDiv = styled.div`
     color: inherit;
     padding: 0;
     width: 100%;`;
+  }}
+  ${(props) => {
+    if (props.timerDiv)
+      return `
+    background: inherit;
+    color: inherit;
+    padding: 0;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    `;
   }}
 `;
 
