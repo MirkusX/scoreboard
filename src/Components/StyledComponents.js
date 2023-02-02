@@ -51,4 +51,8 @@ export const StyledButton = styled.button`
   border-radius: 5px;
   font-size: 1.125rem;
   padding: 0.5em;
+  &:hover {
+    background-color: #9aabd8;
+    color: inherit;
+  }
 `;

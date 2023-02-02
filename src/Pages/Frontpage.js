@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useRef } from "react";
 import {
   StyledButton,
   StyledDiv,
@@ -9,6 +9,7 @@ import {
 import { initialState, reducer } from "../Components/useReducer";
 
 export const Frontpage = () => {
+  let interval = useRef();
   const [state, dispatch] = useReducer(reducer, initialState);
   const add = (team, points) => {
     dispatch({ type: team, payload: points });
@@ -19,13 +20,17 @@ export const Frontpage = () => {
     dispatch({ type: "resetFouls" });
     dispatch({ type: "resetPeriod" });
   };
+  const start = Date.now();
   const timer = () => {
-    let start = Date.now();
-    setInterval(() => {
-      let difference = Date.now() - start;
-      let secs = Math.floor(difference / 1000);
-      dispatch({ type: "date", payload: secs });
-    }, 1000);
+    let difference = Date.now() - start;
+    let secs = Math.floor(difference / 1000);
+    dispatch({ type: "date", payload: secs });
+  };
+  const startTimer = () => {
+    interval.current = setInterval(timer, 1000);
+  };
+  const stopTimer = () => {
+    clearInterval(interval.current);
   };
 
   return (
@@ -62,7 +67,8 @@ export const Frontpage = () => {
           <StyledH2>{state.date}</StyledH2>
         </StyledDiv>
         <StyledDiv foulsButtonDiv>
-          <StyledButton onClick={() => timer()}>Start</StyledButton>
+          <StyledButton onClick={() => startTimer()}>Start</StyledButton>
+          <StyledButton onClick={() => stopTimer()}>Stop</StyledButton>
         </StyledDiv>
       </div>
       <div>
