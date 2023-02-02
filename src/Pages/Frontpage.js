@@ -1,4 +1,11 @@
 import { useReducer } from "react";
+import {
+  StyledButton,
+  StyledDiv,
+  StyledH1,
+  StyledH2,
+  StyledSection,
+} from "../Components/StyledComponents";
 import { initialState, reducer } from "../Components/useReducer";
 
 export const Frontpage = () => {
@@ -6,30 +13,37 @@ export const Frontpage = () => {
   const add = (team, points) => {
     dispatch({ type: team, payload: points });
   };
+  const newGame = () => {
+    dispatch({ type: "resetGuest" });
+    dispatch({ type: "resetHome" });
+  };
   return (
-    <section>
+    <StyledSection>
       <div>
-        <h1>Home</h1>
-        <div>
-          <h2>{state.home}</h2>
-        </div>
-        <div>
-          <button onClick={() => add("home", 1)}>+1</button>
-          <button onClick={() => add("home", 2)}>+2</button>
-          <button onClick={() => add("home", 3)}>+3</button>
-        </div>
+        <StyledH1>Home</StyledH1>
+        <StyledDiv>
+          <StyledH2>{state.home}</StyledH2>
+        </StyledDiv>
+        <StyledDiv buttonDiv>
+          <StyledButton onClick={() => add("home", 1)}>+1</StyledButton>
+          <StyledButton onClick={() => add("home", 2)}>+2</StyledButton>
+          <StyledButton onClick={() => add("home", 3)}>+3</StyledButton>
+        </StyledDiv>
       </div>
       <div>
-        <h1>Guest</h1>
-        <div>
-          <h2>{state.guest}</h2>
-        </div>
-        <div>
-          <button onClick={() => add("guest", 1)}>+1</button>
-          <button onClick={() => add("guest", 2)}>+2</button>
-          <button onClick={() => add("guest", 3)}>+3</button>
-        </div>
+        <StyledButton onClick={() => newGame()}>New Game</StyledButton>
       </div>
-    </section>
+      <div>
+        <StyledH1>Guest</StyledH1>
+        <StyledDiv>
+          <StyledH2>{state.guest}</StyledH2>
+        </StyledDiv>
+        <StyledDiv buttonDiv>
+          <StyledButton onClick={() => add("guest", 1)}>+1</StyledButton>
+          <StyledButton onClick={() => add("guest", 2)}>+2</StyledButton>
+          <StyledButton onClick={() => add("guest", 3)}>+3</StyledButton>
+        </StyledDiv>
+      </div>
+    </StyledSection>
   );
 };
