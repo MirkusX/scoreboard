@@ -1,6 +1,9 @@
 export const initialState = {
   home: 0,
   guest: 0,
+  fouls: 0,
+  period: 0,
+  date: 0,
 };
 
 export const reducer = (state, action) => {
@@ -14,6 +17,21 @@ export const reducer = (state, action) => {
     }
     case "resetHome": {
       return { ...state, home: (state.home = 0) };
+    }
+    case "fouls": {
+      return { ...state, fouls: state.fouls + action.payload };
+    }
+    case "resetFouls": {
+      return { ...state, fouls: (state.fouls = 0) };
+    }
+    case "period": {
+      return { ...state, period: state.period + action.payload };
+    }
+    case "resetPeriod": {
+      return { ...state, period: (state.period = 0) };
+    }
+    case "date": {
+      return { ...state, date: (state.date = action.payload) };
     }
   }
 };

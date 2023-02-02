@@ -16,7 +16,19 @@ export const Frontpage = () => {
   const newGame = () => {
     dispatch({ type: "resetGuest" });
     dispatch({ type: "resetHome" });
+    dispatch({ type: "resetFouls" });
+    dispatch({ type: "resetPeriod" });
   };
+  const timer = () => {
+    setInterval(() => {
+      const start = Date.now();
+      const difference = Date.now() - start;
+      let time = Math.floor(difference / 1000);
+      console.log(time);
+      dispatch({ type: "date", payload: time });
+    }, 1000);
+  };
+
   return (
     <StyledSection>
       <div>
@@ -32,6 +44,27 @@ export const Frontpage = () => {
       </div>
       <div>
         <StyledButton onClick={() => newGame()}>New Game</StyledButton>
+        <StyledH1>Fouls</StyledH1>
+        <StyledDiv>
+          <StyledH2>{state.fouls}</StyledH2>
+        </StyledDiv>
+        <StyledDiv foulsButtonDiv>
+          <StyledButton onClick={() => add("fouls", 1)}>+1</StyledButton>
+        </StyledDiv>
+        <StyledH1>Peroids</StyledH1>
+        <StyledDiv>
+          <StyledH2>{state.period}</StyledH2>
+        </StyledDiv>
+        <StyledDiv foulsButtonDiv>
+          <StyledButton onClick={() => add("period", 1)}>+1</StyledButton>
+        </StyledDiv>
+        <StyledH1>Timer</StyledH1>
+        <StyledDiv>
+          <StyledH2>{state.date}</StyledH2>
+        </StyledDiv>
+        <StyledDiv foulsButtonDiv>
+          <StyledButton onClick={() => timer()}>Start</StyledButton>
+        </StyledDiv>
       </div>
       <div>
         <StyledH1>Guest</StyledH1>

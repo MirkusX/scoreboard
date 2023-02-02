@@ -20,6 +20,17 @@ export const StyledDiv = styled.div`
     display: flex;
     justify-content: space-between;`;
   }}
+  ${(props) => {
+    if (props.foulsButtonDiv)
+      return `
+     background: inherit;
+    color: inherit;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    `;
+  }}
 `;
 
 export const StyledH2 = styled.h2`
