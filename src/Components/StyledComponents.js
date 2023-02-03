@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+//styling
 export const StyledSection = styled.section`
   display: flex;
   justify-content: space-around;

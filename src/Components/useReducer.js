@@ -1,3 +1,4 @@
+//initialstate for reducer
 export const initialState = {
   home: 0,
   guest: 0,
@@ -5,7 +6,7 @@ export const initialState = {
   period: 0,
   date: "00:00",
 };
-
+//reducer
 export const reducer = (state, action) => {
   switch (action.type) {
     case "home":

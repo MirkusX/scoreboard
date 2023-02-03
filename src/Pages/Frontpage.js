@@ -9,11 +9,15 @@ import {
 import { initialState, reducer } from "../Components/useReducer";
 
 export const Frontpage = () => {
+  //ref for interval
   let interval = useRef();
+  //import reducer function and state
   const [state, dispatch] = useReducer(reducer, initialState);
+  //reusable function for adding points
   const add = (team, points) => {
     dispatch({ type: team, payload: points });
   };
+  //resets all points
   const newGame = () => {
     dispatch({ type: "resetGuest" });
     dispatch({ type: "resetHome" });
@@ -21,7 +25,9 @@ export const Frontpage = () => {
     dispatch({ type: "resetPeriod" });
     dispatch({ type: "date", payload: "00:00" });
   };
+  //starting date for timer
   const start = Date.now();
+  //timer function
   const timer = () => {
     let difference = Date.now() - start;
     let secs = Math.floor((difference % (1000 * 60)) / 1000);
@@ -29,10 +35,12 @@ export const Frontpage = () => {
     let overallTime = `${mins}:${secs}`;
     dispatch({ type: "date", payload: overallTime });
   };
+  //function for starting timer
   const startTimer = () => {
     clearInterval(interval.current);
     interval.current = setInterval(timer, 1000);
   };
+  //function for stopping timer
   const stopTimer = () => {
     clearInterval(interval.current);
   };
