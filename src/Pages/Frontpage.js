@@ -9,6 +9,9 @@ import {
 import { initialState, reducer } from "../Components/useReducer";
 
 export const Frontpage = () => {
+  //starting state for timer
+  let secs = 0;
+  let minutes = 0;
   //ref for interval
   let interval = useRef();
   //import reducer function and state
@@ -25,14 +28,15 @@ export const Frontpage = () => {
     dispatch({ type: "resetPeriod" });
     dispatch({ type: "date", payload: "00:00" });
   };
-  //starting date for timer
-  const start = Date.now();
+
   //timer function
   const timer = () => {
-    let difference = Date.now() - start;
-    let secs = Math.floor((difference % (1000 * 60)) / 1000);
-    let mins = Math.floor(difference / 60000);
-    let overallTime = `${mins}:${secs}`;
+    secs++;
+    if (secs === 60) {
+      minutes = +1;
+      secs = 0;
+    }
+    let overallTime = `${minutes}:${secs}`;
     dispatch({ type: "date", payload: overallTime });
   };
   //function for starting timer

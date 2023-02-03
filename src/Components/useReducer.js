@@ -4,7 +4,7 @@ export const initialState = {
   guest: 0,
   fouls: 0,
   period: 0,
-  date: "00:00",
+  date: "0:0",
 };
 //reducer
 export const reducer = (state, action) => {
