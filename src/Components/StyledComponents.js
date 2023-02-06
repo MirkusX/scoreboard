@@ -71,6 +71,11 @@ export const StyledDiv = styled.div`
 export const StyledH2 = styled.h2`
   font-size: 5.625rem;
   margin: 0;
+  ${(props) => {
+    if (props.showcase)
+      return `
+    color: gold;`;
+  }}
 `;
 
 export const StyledH1 = styled.h2`

@@ -1,4 +1,4 @@
-import { useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import {
   StyledButton,
   StyledDiv,
@@ -17,6 +17,7 @@ export const Frontpage = () => {
   //import reducer function and state
   const [state, dispatch] = useReducer(reducer, initialState);
   //reusable function for adding points
+
   const add = (team, points) => {
     dispatch({ type: team, payload: points });
   };
@@ -26,7 +27,7 @@ export const Frontpage = () => {
     dispatch({ type: "resetHome" });
     dispatch({ type: "resetFouls" });
     dispatch({ type: "resetPeriod" });
-    dispatch({ type: "date", payload: "00:00" });
+    dispatch({ type: "date", payload: "0:0" });
   };
 
   //timer function
@@ -48,6 +49,15 @@ export const Frontpage = () => {
   const stopTimer = () => {
     clearInterval(interval.current);
   };
+  useEffect(() => {
+    if (state.home > state.guest) {
+      dispatch({ type: "guestBool", payload: false });
+      dispatch({ type: "homeBool", payload: true });
+    } else if (state.guest > state.home) {
+      dispatch({ type: "homeBool", payload: false });
+      dispatch({ type: "guestBool", payload: true });
+    }
+  }, [add]);
 
   return (
     <>
@@ -55,7 +65,7 @@ export const Frontpage = () => {
         <div>
           <StyledH1>Home</StyledH1>
           <StyledDiv>
-            <StyledH2>{state.home}</StyledH2>
+            <StyledH2 showcase={state.homeBool}>{state.home}</StyledH2>
           </StyledDiv>
           <StyledDiv buttonDiv>
             <StyledButton onClick={() => add("home", 1)}>+1</StyledButton>
@@ -66,7 +76,7 @@ export const Frontpage = () => {
         <div>
           <StyledH1>Guest</StyledH1>
           <StyledDiv>
-            <StyledH2>{state.guest}</StyledH2>
+            <StyledH2 showcase={state.guestBool}>{state.guest}</StyledH2>
           </StyledDiv>
           <StyledDiv buttonDiv>
             <StyledButton onClick={() => add("guest", 1)}>+1</StyledButton>

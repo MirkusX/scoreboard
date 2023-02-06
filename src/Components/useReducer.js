@@ -5,6 +5,8 @@ export const initialState = {
   fouls: 0,
   period: 0,
   date: "0:0",
+  homeBool: false,
+  guestBool: false,
 };
 //reducer
 export const reducer = (state, action) => {
@@ -33,6 +35,12 @@ export const reducer = (state, action) => {
     }
     case "date": {
       return { ...state, date: (state.date = action.payload) };
+    }
+    case "homeBool": {
+      return { ...state, homeBool: (state.homeBool = action.payload) };
+    }
+    case "guestBool": {
+      return { ...state, guestBool: (state.guestBool = action.payload) };
     }
   }
 };
