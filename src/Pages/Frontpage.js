@@ -49,6 +49,7 @@ export const Frontpage = () => {
   const stopTimer = () => {
     clearInterval(interval.current);
   };
+  //checks if home or guest is the leader each time point is added and applies unique styling
   useEffect(() => {
     if (state.home > state.guest) {
       dispatch({ type: "guestBool", payload: false });
